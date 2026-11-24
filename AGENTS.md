@@ -1,0 +1,10 @@
+# Repository instructions for coding agents
+
+- Read `README.md`, `PLAN.md` and `PROGRESS.md` to understand relevant context before substantive project work. Treat the course PDF and frozen dataset documentation as authoritative for course requirements.
+- Preserve the frozen ClinVar inputs and all 4,606 target variants. Do not silently refresh data, alter declared split assignments, claim uncertain classifications are known outcomes, or treat missing evidence as zero.
+- Respect the team's pre-registered train / validation / test policy. Do not fit preprocessing, select features or tune against held-out test data. Document external predictor / assay provenance and possible overlap with labels. Label proposals and uncertain results clearly.
+- After substantive project work, update `PROGRESS.md` on the current working branch with a short factual, dated entry, links or paths to evidence, and remaining work or blockers. Record the contributor only when known. Preserve other people's entries and reconcile parallel updates. No progress edit is necessary for a read-only answer or when a higher-priority instruction or required approval prevents changes.
+- `PLAN.md` holds shared decisions. Propose substantive plan changes in a pull request; explain rationale and distinguish decisions from proposals. Never silently rewrite the agreed plan or pre-registered split after results are seen.
+- Follow `CONTRIBUTING.md` for branch names and semantic commit messages. Do not commit, push, open a PR, modify repository settings, or perform external writes without the user's authorization. Follow applicable per-user and repository approval instructions.
+- Do not invent teammates' progress, results, validation, biological mechanisms, access rights or automatic synchronization. Do not add secrets, credentials, private patient information or materials without suitable sharing permission.
+- Use `.agents/skills/project-workflow/SKILL.md` for the repeatable project workflow when relevant. A skill or this file does not grant permission for additional actions.
