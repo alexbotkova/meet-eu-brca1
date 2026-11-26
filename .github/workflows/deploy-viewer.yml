@@ -20,12 +20,21 @@ jobs:
       - name: Run dataset tests
         run: python3 -m unittest discover -s tests -v
 
-  deploy:
+  prepare-pages:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: validate
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./viewer
+
+  deploy:
+    needs: prepare-pages
+    runs-on: ubuntu-latest
     permissions:
-      contents: read
       pages: write
       id-token: write
     environment:
@@ -35,11 +44,6 @@ jobs:
       group: github-pages
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./viewer
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
