@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BRCA1 protein explorer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js"></script>
+  <!-- Update the version when app.js changes so an old script is not reused. -->
+  <script defer src="app.js?v=20261125-helix-regions"></script>
+</head>
+<body>
+<header class="topbar">
+  <h1>BRCA1 protein explorer</h1>
+  <span>Human BRCA1 · P38398 · NP_009225.1</span>
+  <span class="snapshot">ClinVar snapshot: 5 October 2026</span>
+</header>
+<main>
+  <section class="workspace" aria-label="Structure explorer">
+    <div class="controls">
+      <label for="structure">Structure</label>
+      <select id="structure"><option value="af">Full-length · AlphaFold v6</option><option value="ring">RING · human 7LYB</option><option value="brct">BRCT · human 8RS8</option><option value="mouse">Coiled-coil · mouse 7K3S</option></select>
+      <form id="search-form"><label for="position">Residue</label><input id="position" type="number" min="1" max="1863" placeholder="1–1863" required><button type="submit">Go</button></form>
+    </div>
+    <div class="body-grid">
+      <div class="visual">
+        <div class="sequence" aria-label="Protein region selection">
+          <div class="seq-title"><strong>Protein regions</strong><span>Human BRCA1 · 1–1863</span></div>
+          <div class="sequence-track" id="sequence-track" aria-hidden="true" title="Drag to add a custom residue range"><div id="sequence-selection"></div></div>
+          <div class="axis"><span>1</span><span>500</span><span>1000</span><span>1500</span><span>1863</span></div>
+          <div class="control-group" role="group" aria-label="Zoom to region"><strong>Zoom to</strong><button type="button" data-zoom="44">RING</button><button type="button" data-zoom="1407">Coiled-coil</button><button type="button" data-zoom="1750">BRCT</button></div>
+          <div class="control-group" role="group" aria-label="Show regions"><strong>Show regions</strong><button type="button" data-region="ring" aria-pressed="false">RING + flanks</button><button type="button" data-region="coil" aria-pressed="false">Coiled-coil</button><button type="button" data-region="brct" aria-pressed="false">BRCT</button><button type="button" data-region="helices" aria-pressed="false">Predicted helices</button><button type="button" data-region="other" aria-pressed="false">Remaining regions</button><button type="button" id="show-all">Show full protein</button></div>
+          <div class="track-note">Choose any combination of regions. The two predicted helices are low-confidence AlphaFold segments; “Remaining regions” includes largely disordered stretches, but is not a disorder annotation.</div>
+          <form id="range-form" class="range-form"><label for="range-start">Add custom range</label><input id="range-start" type="number" min="1" max="1863" step="1" value="1" required><label for="range-end">to</label><input id="range-end" type="number" min="1" max="1863" step="1" value="1863" required><button type="submit">Apply range</button><button type="button" id="remove-custom" hidden>Remove custom range</button></form>
+          <div class="track-note">Drag on the track or enter positions to add or replace a custom range.</div>
+          <p id="range-status" role="status" class="range-status"></p>
+        </div>
+        <div class="canvas-area">
+          <div class="canvas-top"><strong id="view-title">Full-length human BRCA1</strong><label class="partner-toggle"><input id="partners" type="checkbox" checked> Show partners</label></div>
+          <div id="viewer" aria-label="Interactive protein structure"></div>
+          <div id="viewer-status" role="status">Loading structure…</div>
+        </div>
+        <div class="viewer-controls">
+          <label for="mode">Color by</label><select id="mode"><option value="confidence">Model confidence</option><option value="variants">ClinVar classifications</option></select>
+          <button id="reset" type="button">Reset camera</button>
+        </div>
+        <div class="legend" id="legend" aria-label="Color legend"></div>
+        <p class="viewer-help">Drag to rotate · Scroll to zoom · Ctrl + drag to move</p>
+      </div>
+      <aside class="details" aria-label="Residue details">
+        <div class="panel-heading"><h2>Residue details</h2></div>
+        <fieldset class="classification-filter"><legend>ClinVar classification</legend>
+          <p class="filter-hint">Choose “ClinVar classifications” under Color by to display these colors on the structure.</p>
+          <label><input type="checkbox" name="classification" value="pathogenic" checked><span class="swatch pathogenic"></span>Pathogenic / likely pathogenic</label>
+          <label><input type="checkbox" name="classification" value="benign" checked><span class="swatch benign"></span>Benign / likely benign</label>
+          <label><input type="checkbox" name="classification" value="uncertain"><span class="swatch uncertain"></span>Uncertain significance</label>
+          <label><input type="checkbox" name="classification" value="conflicting"><span class="swatch conflicting"></span>Conflicting classifications</label>
+          <label><input type="checkbox" name="classification" value="other"><span class="swatch other"></span>Other / unclassified</label>
+          <p id="filter-summary" role="status"></p>
+        </fieldset>
+        <div id="details"><p class="empty">Click a residue in the structure or search by position to view its ClinVar records.</p></div>
+      </aside>
+    </div>
+  </section>
+  <section class="provenance" aria-labelledby="about-heading">
+    <h2 id="about-heading">Structure and data information</h2>
+    <p id="structure-info"></p>
+    <p>The viewer maps 6,388 single-substitution records, including all 4,606 prediction targets. The 75 records without a single-substitution mapping remain in the frozen source. Classifications are from that snapshot, not new predictions. A position can have multiple substitutions and classifications. Gray can mean no matching records or a filtered-out position. Colored overlap dots are display markers, not variant structures.</p>
+    <p>Low-confidence AlphaFold regions and the relative positions of distant regions should be interpreted cautiously. This viewer is for research and is not a clinical interpretation tool.</p>
+  </section>
+</main>
+</body>
+</html>
