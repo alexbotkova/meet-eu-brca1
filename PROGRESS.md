@@ -16,7 +16,8 @@ Last updated: 2026-11-26. This is a shared summary of verified work, not an auto
 
 - **Work:** Prepared a GitHub Actions workflow to validate the viewer and publish its static files to GitHub Pages after changes reach `main`. Set the repository's Pages source to GitHub Actions.
 - **Evidence:** [deployment workflow](.github/workflows/deploy-viewer.yml) and [viewer deployment instructions](viewer/README.md).
-- **Next / blockers:** Commit and push the workflow, merge it into `main`, and verify the first deployment.
+- **Deployment check:** The workflow was merged in [PR #2](https://github.com/alexbotkova/meet-eu-brca1/pull/2). Validation passed, but the [first deployment](https://github.com/alexbotkova/meet-eu-brca1/actions/runs/45904226103) failed because GitHub could not find the artifact immediately after upload. A follow-up separates upload and deployment into dependent jobs.
+- **Next / blockers:** Review and merge the deployment fix, then verify the first successful deployment.
 
 ### 2026-11-25 — KAN-9 viewer prototype
 
