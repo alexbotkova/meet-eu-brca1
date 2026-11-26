@@ -9,6 +9,8 @@ A shared workspace for the Meet-EU project on predicting the effects and mechani
 - [CONTRIBUTING.md](CONTRIBUTING.md): branches, commit messages and pull requests.
 - [AGENTS.md](AGENTS.md): guidance for coding agents working in this repository.
 - [Course overview](COURSE_README.md), [project plan](Docs/brca1_variant_project_plan.pdf) and [dataset description](Data/README.md).
+- [BRCA1 protein structure notes](Docs/BRCA1_STRUCTURE_NOTES.md): biological context, structural evidence and current uncertainties.
+- [BRCA1 protein explorer](viewer/README.md): instructions for running the KAN-9 interactive viewer locally.
 - [Jira project](https://meeteu.atlassian.net/jira/software/projects/KAN/boards): team work items; access depends on the team member's Jira permissions.
 
 ## Course data

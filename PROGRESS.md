@@ -1,6 +1,6 @@
 # Project progress
 
-Last updated: 2026-11-24. This is a shared summary of verified work, not an automatic record of everything each person has done. Check linked Jira issues, branches and pull requests for current status. Add a short dated entry after substantive work and link to evidence; do not attribute or mark work complete without confirmation.
+Last updated: 2026-11-25. This is a shared summary of verified work, not an automatic record of everything each person has done. Check linked Jira issues, branches and pull requests for current status. Add a short dated entry after substantive work and link to evidence; do not attribute or mark work complete without confirmation.
 
 ## Current status
 
@@ -11,6 +11,17 @@ Last updated: 2026-11-24. This is a shared summary of verified work, not an auto
 - **Baselines, classifier and final predictions:** no implementation or results are included in this initial copy; confirm team status before making claims about work elsewhere.
 
 ## Recent work
+
+### 2026-11-25 — KAN-9 viewer prototype
+
+- **Work:** Added a browser-based BRCA1 reference-protein explorer with AlphaFold confidence, frozen ClinVar record filtering, residue search and separate human experimental and mouse homolog views. The dataset itself and split policy are unchanged.
+- **Evidence:** [viewer documentation](viewer/README.md), [data preparation](scripts/prepare_viewer_data.py), [structure checks](scripts/check_viewer_structures.py) and [dataset tests](tests/test_viewer_data.py). The 6,388 single-substitution records map without reference-residue mismatches; all 4,606 targets are included. Human 7LYB and 8RS8 resolved sequences match their respective displayed regions; 7K3S differs at six of 30 aligned mouse residues.
+- **Next / blockers:** Review the prototype and its classification display with the team; it requires network access and WebGL. Interactive overlay, publication and final project integration are not included.
+- **Interface update:** Reworked the prototype into a compact viewer with a sequence navigation strip and a tabular residue-details panel, following user feedback.
+- **Workflow:** Renamed the local work branch to `feature/kan-9-protein-viewer` and updated [CONTRIBUTING.md](CONTRIBUTING.md) to use tool-neutral branch and commit descriptions.
+- **Range selection:** Added separate zoom shortcuts and combinable region-visibility controls, including a custom human-residue range; partial or missing experimental coverage is reported in the viewer. The two candidate low-confidence AlphaFold helices (372–390 and 849–863) are selectable separately from the remaining regions; neither selection is an experimental disorder annotation. Updated the script URL version to prevent browsers from pairing the new buttons with cached old region logic.
+- **Classification display:** Added multi-select classification filters, separate colored markers for positions with multiple selected categories, and dataset / visible-structure counts, including prediction-target coverage.
+- **Research notes:** Added [BRCA1 protein structure notes](Docs/BRCA1_STRUCTURE_NOTES.md) covering the selected experimental structures, AlphaFold confidence and current uncertainties; linked them from the project README.
 
 ### 2026-11-24 — Repository setup
 
