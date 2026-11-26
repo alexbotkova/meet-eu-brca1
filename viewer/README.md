@@ -10,7 +10,11 @@ From the repository root:
 python3 -m http.server 8000 --bind 127.0.0.1 --directory viewer
 ```
 
-Open <http://127.0.0.1:8000/>. The browser needs WebGL and internet access: it loads 3Dmol.js 2.5.5 from cdnjs, structures from AlphaFold DB and RCSB PDB. These services will see the browser's network request. No ClinVar rows or search selections are sent to these services by the viewer. Keep the terminal running while using the page. Opening the HTML directly as a file is not supported. When changing `app.js`, update its version query in `index.html` so returning browsers load the matching script. A public static HTTPS host can also serve the `viewer/` directory; hosting has not been configured.
+Open <http://127.0.0.1:8000/>. The browser needs WebGL and internet access: it loads 3Dmol.js 2.5.5 from cdnjs, structures from AlphaFold DB and RCSB PDB. These services will see the browser's network request. No ClinVar rows or search selections are sent to these services by the viewer. Keep the terminal running while using the page. Opening the HTML directly as a file is not supported. When changing `app.js`, update its version query in `index.html` so returning browsers load the matching script.
+
+## GitHub Pages
+
+The [deployment workflow](../.github/workflows/deploy-viewer.yml) checks pull requests targeting `main` and publishes the `viewer/` directory after validation on `main`. Set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. Once the workflow has been merged and successfully deployed, the expected public address is <https://alexbotkova.github.io/meet-eu-brca1/>. The page and its published files are publicly accessible; it still needs WebGL and access to the external services described above. A workflow can also be started manually from `main` in the Actions tab.
 
 ## Interactions
 

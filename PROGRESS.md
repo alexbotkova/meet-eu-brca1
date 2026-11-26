@@ -1,6 +1,6 @@
 # Project progress
 
-Last updated: 2026-11-25. This is a shared summary of verified work, not an automatic record of everything each person has done. Check linked Jira issues, branches and pull requests for current status. Add a short dated entry after substantive work and link to evidence; do not attribute or mark work complete without confirmation.
+Last updated: 2026-11-26. This is a shared summary of verified work, not an automatic record of everything each person has done. Check linked Jira issues, branches and pull requests for current status. Add a short dated entry after substantive work and link to evidence; do not attribute or mark work complete without confirmation.
 
 ## Current status
 
@@ -11,6 +11,12 @@ Last updated: 2026-11-25. This is a shared summary of verified work, not an auto
 - **Baselines, classifier and final predictions:** no implementation or results are included in this initial copy; confirm team status before making claims about work elsewhere.
 
 ## Recent work
+
+### 2026-11-26 — Viewer deployment preparation
+
+- **Work:** Prepared a GitHub Actions workflow to validate the viewer and publish its static files to GitHub Pages after changes reach `main`. Set the repository's Pages source to GitHub Actions.
+- **Evidence:** [deployment workflow](.github/workflows/deploy-viewer.yml) and [viewer deployment instructions](viewer/README.md).
+- **Next / blockers:** Commit and push the workflow, merge it into `main`, and verify the first deployment.
 
 ### 2026-11-25 — KAN-9 viewer prototype
 
